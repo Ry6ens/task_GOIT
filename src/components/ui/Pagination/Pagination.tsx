@@ -2,6 +2,10 @@ import React from "react";
 
 import { Button } from "./Pagination.styled";
 
-export default function Pagination() {
-  return <Button>Load more</Button>;
+interface Props {
+  loadMore: () => void;
+}
+
+export default function Pagination({ loadMore }: Props) {
+  return <Button onClick={() => loadMore()}>Load more</Button>;
 }

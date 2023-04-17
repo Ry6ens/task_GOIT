@@ -55,7 +55,6 @@ export default function PostItem({ post, btnFollow, subscribeUser }: Props) {
       >
         {followBoolean ? "Following" : "Follow"}
       </Button>
-      <p>{btnFollow}</p>
     </ListItem>
   );
 }

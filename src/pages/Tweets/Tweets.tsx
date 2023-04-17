@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { getUsers } from "@/components/api/getUsers";
+import { getUsers, addFollow } from "@/components/api/getUsers";
 
 import { useFetch } from "@/hooks/useFetch";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -31,13 +31,15 @@ export default function TweetsPage() {
 
   const [posts, setPosts] = useState<Array<IUser>>([]);
   const [filter, setFilter] = useState({ sort: "" });
+  const [limit, setLimit] = useState(12);
 
   const [fetchPosts, postsIsLoading, postsError] = useFetch(async () => {
     const response = await getUsers();
     setPosts(response);
   });
-  const sortedPosts = useSortedPosts(posts, filter.sort);
   const [follow, setFollow] = useLocalStorage("followers", []);
+  const sortedPosts = useSortedPosts(posts, filter.sort, follow);
+  const sortedPostsLimit = sortedPosts.slice(0, limit);
 
   useEffect(() => {
     fetchPosts();
@@ -47,14 +49,28 @@ export default function TweetsPage() {
   const subscribeUser = (post: IUser) => {
     setFollow((prevState: any) => {
       const index = prevState.indexOf(post.id);
+      const findIndexPost = posts.findIndex(({ id }) => id === post.id);
+      const findPost: IUser | undefined = posts.find(
+        ({ id }) => id === post.id
+      );
 
       if (index === -1) {
+        addFollow(post.id, { followers: post.followers + 1 });
+        const newPost: any = { ...findPost, followers: post.followers + 1 };
+        posts.splice(findIndexPost, 1, newPost);
         return [...prevState, post.id];
       } else {
+        addFollow(post.id, { followers: post.followers - 1 });
+        const newPost: any = { ...findPost, followers: post.followers - 1 };
+        posts.splice(findIndexPost, 1, newPost);
         const removeId = prevState.filter((el: string) => el !== post.id);
         return removeId;
       }
     });
+  };
+
+  const showMoreItems = () => {
+    setLimit((prevValue) => prevValue + 12);
   };
 
   return (
@@ -70,13 +86,19 @@ export default function TweetsPage() {
       {postsIsLoading ? (
         <Loader />
       ) : (
-        <PostsList
-          posts={sortedPosts}
-          btnFollow={follow}
-          subscribeUser={subscribeUser}
-        />
+        <>
+          <PostsList
+            posts={sortedPostsLimit}
+            btnFollow={follow}
+            subscribeUser={subscribeUser}
+          />
+          {sortedPostsLimit.length >= limit ? (
+            <Pagination loadMore={showMoreItems} />
+          ) : (
+            <></>
+          )}
+        </>
       )}
-      <Pagination />
     </Container>
   );
 }

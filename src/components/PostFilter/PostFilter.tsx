@@ -9,7 +9,7 @@ const options = [
   },
   {
     name: "Sort by follow",
-    value: "followers",
+    value: "follow",
   },
   {
     name: "Sort by followings",

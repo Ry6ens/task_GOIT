@@ -11,7 +11,7 @@ export const useLocalStorage = <T>(
     if (value) {
       return value ? JSON.parse(value) : initialValue;
     }
-    return;
+    return initialValue;
   });
 
   // save the new value when it changes

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "@/styles/Media.variables";
 
 export const List = styled.ul`
-  margin-top: 50px;
+  margin: 50px 0px;
 
   display: flex;
   flex-wrap: wrap;

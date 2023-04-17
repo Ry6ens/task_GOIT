@@ -19,7 +19,6 @@ interface Props {
 }
 
 export default function PostsList({ posts, btnFollow, subscribeUser }: Props) {
-  console.log("re-render");
   const elements = posts.map((item: IPost) => (
     <PostItem
       key={item.id}
