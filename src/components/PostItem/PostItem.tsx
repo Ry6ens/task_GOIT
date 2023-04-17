@@ -1,7 +1,5 @@
 import React from "react";
 
-import ButtonFollow from "@/components/ui/ButtonFollow/ButtonFollow";
-
 import LogoIcon from "@/components/icons/Logo/Logo";
 
 import MainImage from "@/images/main.png";
@@ -15,6 +13,7 @@ import {
   AvatarIMG,
   TextTweets,
   TextFollowers,
+  Button,
 } from "./PostItem.styled";
 
 interface IPost {
@@ -27,10 +26,13 @@ interface IPost {
 
 interface Props {
   post: IPost;
+  btnFollow: string[];
   subscribeUser: (p: IPost) => void;
 }
 
-export default function PostItem({ post, subscribeUser }: Props) {
+export default function PostItem({ post, btnFollow, subscribeUser }: Props) {
+  const followBoolean = btnFollow.find((el) => el === post.id);
+
   return (
     <ListItem>
       <OverlayLogo>
@@ -45,7 +47,15 @@ export default function PostItem({ post, subscribeUser }: Props) {
       <TextFollowers>
         {post.followers.toLocaleString("en-US")} FOLLOWERS
       </TextFollowers>
-      <ButtonFollow text="Follow" onClick={() => subscribeUser(post)} />
+      <Button
+        onClick={() => subscribeUser(post)}
+        style={
+          followBoolean ? { background: "#5CD3A8" } : { background: "#ebd8ff" }
+        }
+      >
+        {followBoolean ? "Following" : "Follow"}
+      </Button>
+      <p>{btnFollow}</p>
     </ListItem>
   );
 }

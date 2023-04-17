@@ -14,12 +14,19 @@ interface IPost {
 
 interface Props {
   posts: Array<IPost>;
+  btnFollow: string[];
   subscribeUser: (p: IPost) => void;
 }
 
-export default function PostsList({ posts, subscribeUser }: Props) {
+export default function PostsList({ posts, btnFollow, subscribeUser }: Props) {
+  console.log("re-render");
   const elements = posts.map((item: IPost) => (
-    <PostItem key={item.id} post={item} subscribeUser={subscribeUser} />
+    <PostItem
+      key={item.id}
+      post={item}
+      btnFollow={btnFollow}
+      subscribeUser={subscribeUser}
+    />
   ));
 
   return <List>{posts.length ? elements : <>Post not found!</>}</List>;

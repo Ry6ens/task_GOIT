@@ -9,7 +9,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 import PostsList from "@/components/PostsList/PostsList";
 import PostFilter from "@/components/PostFilter/PostFilter";
-
+import Pagination from "@/components/ui/Pagination/Pagination";
 import ButtonBack from "@/components/ui/ButtonBack/ButtonBack";
 import Loader from "@/components/ui/Loader/Loader";
 
@@ -32,12 +32,12 @@ export default function TweetsPage() {
   const [posts, setPosts] = useState<Array<IUser>>([]);
   const [filter, setFilter] = useState({ sort: "" });
 
-  const [follow, setFollow] = useLocalStorage("followers");
   const [fetchPosts, postsIsLoading, postsError] = useFetch(async () => {
     const response = await getUsers();
     setPosts(response);
   });
   const sortedPosts = useSortedPosts(posts, filter.sort);
+  const [follow, setFollow] = useLocalStorage("followers", []);
 
   useEffect(() => {
     fetchPosts();
@@ -49,12 +49,10 @@ export default function TweetsPage() {
       const index = prevState.indexOf(post.id);
 
       if (index === -1) {
-        console.log("-1", prevState);
         return [...prevState, post.id];
       } else {
-        prevState.splice(index, 1);
-        console.log("prevFollowings", prevState);
-        return [...prevState];
+        const removeId = prevState.filter((el: string) => el !== post.id);
+        return removeId;
       }
     });
   };
@@ -72,8 +70,13 @@ export default function TweetsPage() {
       {postsIsLoading ? (
         <Loader />
       ) : (
-        <PostsList posts={sortedPosts} subscribeUser={subscribeUser} />
+        <PostsList
+          posts={sortedPosts}
+          btnFollow={follow}
+          subscribeUser={subscribeUser}
+        />
       )}
+      <Pagination />
     </Container>
   );
 }
