@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { device } from "@/styles/Media.variables";
 
 export const Container = styled.section`
-  margin: 0 auto;
   padding: 0px 16px;
 
   display: flex;

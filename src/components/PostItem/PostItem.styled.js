@@ -4,7 +4,7 @@ import { device } from "@/styles/Media.variables";
 export const ListItem = styled.li`
   position: relative;
 
-  width: 320px;
+  width: 280px;
   height: 460px;
 
   display: flex;
@@ -21,6 +21,10 @@ export const ListItem = styled.li`
   border-radius: 20px;
 
   @media ${device.tablet} {
+    width: 340px;
+  }
+
+  @media ${device.desktop} {
     width: 380px;
   }
 `;
@@ -34,29 +38,33 @@ export const OverlayLogo = styled.div`
 export const Image = styled.img`
   margin-top: 28px;
 
-  width: 308px;
+  width: 260px;
   height: 168px;
+
+  @media ${device.tablet} {
+    width: 320px;
+  }
+
+  @media ${device.desktop} {
+    width: 380px;
+  }
 `;
 
 export const Line = styled.div`
   margin-top: 18px;
 
-  width: 320px;
+  width: 100%;
   height: 8px;
 
   background: #ebd8ff;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
     inset 0px -1.71846px 3.43693px #ae7be3, inset 0px 3.43693px 2.5777px #fbf8ff;
-
-  @media ${device.tablet} {
-    width: 380px;
-  }
 `;
 
 export const OverlayIMG = styled.div`
   position: absolute;
   top: 178px;
-  left: 120px;
+  left: 110px;
 
   width: 80px;
   height: 80px;
@@ -73,6 +81,10 @@ export const OverlayIMG = styled.div`
   border-radius: 50%;
 
   @media ${device.tablet} {
+    left: 130px;
+  }
+
+  @media ${device.desktop} {
     left: 150px;
   }
 `;
@@ -88,20 +100,28 @@ export const TextTweets = styled.p`
   margin-top: 68px;
 
   font-family: var(--font-MontserratMedium);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 24px;
 
   color: #ebd8ff;
+
+  @media ${device.tablet} {
+    font-size: 20px;
+  }
 `;
 
 export const TextFollowers = styled.p`
   margin-top: 18px;
 
   font-family: var(--font-MontserratMedium);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 24px;
 
   color: #ebd8ff;
+
+  @media ${device.tablet} {
+    font-size: 20px;
+  }
 `;
 
 export const Button = styled.button`

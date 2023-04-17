@@ -2,7 +2,7 @@ import React from "react";
 
 import PostItem from "../PostItem/PostItem";
 
-import { List } from "./PostsList.styled";
+import { List, TextNotFound } from "./PostsList.styled";
 
 interface IPost {
   id: string;
@@ -28,5 +28,13 @@ export default function PostsList({ posts, btnFollow, subscribeUser }: Props) {
     />
   ));
 
-  return <List>{posts.length ? elements : <>Post not found!</>}</List>;
+  return (
+    <>
+      {posts.length ? (
+        <List>{elements}</List>
+      ) : (
+        <TextNotFound>Posts not found!</TextNotFound>
+      )}
+    </>
+  );
 }

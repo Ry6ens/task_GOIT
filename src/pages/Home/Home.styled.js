@@ -15,7 +15,7 @@ export const Container = styled.section`
 `;
 
 export const Image = styled.img`
-  margin: 0 auto;
+  margin: 100px auto 0px;
 
   width: 200px;
 
