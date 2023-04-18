@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { getUsers, addFollow } from "@/components/api/getUsers";
+import { getUsers, setFollowing } from "@/components/api/getUsers";
 
 import { useFetch } from "@/hooks/useFetch";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -53,15 +53,17 @@ export default function TweetsPage() {
       const findPost: IUser | undefined = posts.find(
         ({ id }) => id === post.id
       );
+      const subscribe = { followers: post.followers + 1 };
+      const unsubscribe = { followers: post.followers - 1 };
 
       if (index === -1) {
-        addFollow(post.id, { followers: post.followers + 1 });
-        const newPost: any = { ...findPost, followers: post.followers + 1 };
+        setFollowing(post.id, subscribe);
+        const newPost: any = { ...findPost, ...subscribe };
         posts.splice(findIndexPost, 1, newPost);
         return [...prevState, post.id];
       } else {
-        addFollow(post.id, { followers: post.followers - 1 });
-        const newPost: any = { ...findPost, followers: post.followers - 1 };
+        setFollowing(post.id, unsubscribe);
+        const newPost: any = { ...findPost, ...unsubscribe };
         posts.splice(findIndexPost, 1, newPost);
         const removeId = prevState.filter((el: string) => el !== post.id);
         return removeId;

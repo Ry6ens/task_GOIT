@@ -9,7 +9,7 @@ export const getUsers = async () => {
   return data;
 };
 
-export const addFollow = async (id, followers) => {
+export const setFollowing = async (id, followers) => {
   const { data } = await instance.put(`api/users/${id}`, followers);
   return data;
 };

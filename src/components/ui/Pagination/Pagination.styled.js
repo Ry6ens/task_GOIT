@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "@/styles/Media.variables";
 
 export const Button = styled.button`
   margin: 0px auto 50px;
