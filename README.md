@@ -1,5 +1,7 @@
 # Tweets | GoIT_TEST
 
+![task-goit.vercel](https://task-goit.vercel.app/)
+
 ## Реалізація проекту
 
 - Проект зібраний за допомогою [create-react-app](https://create-react-app.dev/).
@@ -22,5 +24,3 @@
 
 ![JavaScrip](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-
-# [Жива сторінка](https://task-goit.vercel.app/)
