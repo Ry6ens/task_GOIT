@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+# Tweets | GoIT_TEST
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Реалізація проекту
 
-## Available Scripts
+- Проект зібраний за допомогою [create-react-app](https://create-react-app.dev/).
+- В якості `backend` використано [mockapi.io](https://mockapi.io/).
+- Стилі написані на [styled-components](https://styled-components.com/).
+- Всі необхідні дані для роботи додатку зберігаються в `localStorage`.
 
-In the project directory, you can run:
+### Реалізовано:
 
-### `npm start`
+- Сторінки: `Home`, `Tweets`
+- Сторінка `Home` з коротким описом про додаток
+- Сторінка `Tweets` на якій відображаються картки користувачів (імʼя, кількість
+  твіттів, підписників та кнопка Follow з можливістю підписатись на `tweet`):
+  1. Кнопка `back` для повернення на сторінку `Tweets`;
+  2. `Dropdown` з можливістю фільтрації карток за станом `follow` або `following`;
+  3. Кнопка `load more` для отримання додаткових `tweets`.
+- У випадку переходу на неіснуючій `route` автоматичне перенаправлення сторінку `Home`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Стек технологій
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![JavaScrip](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# [Жива сторінка](https://task-goit.vercel.app/)

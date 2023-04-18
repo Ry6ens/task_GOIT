@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { device } from "@/styles/Media.variables";
 
 import Header from "./components/layout/Header/Header";
-import Footer from "./components/layout/Footer/Footer";
 import UserRoutes from "./components/routes/UserRoutes";
 
 const Main = styled.main`
@@ -21,7 +20,6 @@ export default function App() {
       <Main>
         <UserRoutes />
       </Main>
-      {/* <Footer /> */}
     </>
   );
 }
