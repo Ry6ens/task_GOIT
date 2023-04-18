@@ -48,10 +48,9 @@ export default function PostItem({ post, btnFollow, subscribeUser }: Props) {
         {post.followers.toLocaleString("en-US")} FOLLOWERS
       </TextFollowers>
       <Button
+        type="button"
+        className={followBoolean ? "following" : ""}
         onClick={() => subscribeUser(post)}
-        style={
-          followBoolean ? { background: "#5CD3A8" } : { background: "#ebd8ff" }
-        }
       >
         {followBoolean ? "Following" : "Follow"}
       </Button>
