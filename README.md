@@ -1,6 +1,6 @@
 # Tweets | GoIT_TEST
 
-![task-goit.vercel](https://task-goit.vercel.app/)
+[task-goit.vercel](https://task-goit.vercel.app/)
 
 ## Реалізація проекту
 
